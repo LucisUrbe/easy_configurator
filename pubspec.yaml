@@ -1,5 +1,5 @@
 name: easy_configurator
-description: "A new Flutter project."
+description: "Easy configurator for JSON user-side ."
 
 # Prevent accidental publishing to pub.dev.
 publish_to: 'none'
@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  sidebarx: ^0.16.3
 
 dev_dependencies:
   flutter_test:
