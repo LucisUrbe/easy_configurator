@@ -36,8 +36,9 @@ class MainApp extends StatelessWidget {
             key: _key,
             appBar: isSmallScreen
                 ? AppBar(
+                    foregroundColor: white,
                     backgroundColor: canvasColor,
-                    title: Text(getTitleByIndex(_controller.selectedIndex)),
+                    title: const Text('Easy Configurator'),
                     leading: IconButton(
                       onPressed: () {
                         if (!Platform.isAndroid && !Platform.isIOS) {

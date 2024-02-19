@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-const primaryColor = Color(0xFF685BFF);
-const canvasColor = Color(0xFF2E2E48);
-const scaffoldBackgroundColor = Color(0xFF464667);
-const accentCanvasColor = Color(0xFF3E3E61);
+import 'screens.dart';
+
+const primaryColor = Color.fromARGB(255, 91, 162, 255);
+const canvasColor = Color.fromARGB(255, 34, 60, 71);
+const scaffoldBackgroundColor = Color.fromARGB(255, 7, 39, 46);
+const accentCanvasColor = Color.fromARGB(255, 62, 88, 97);
 const white = Colors.white;
-final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
+final actionColor = const Color.fromARGB(255, 95, 139, 167).withOpacity(0.6);
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
 
 class SidebarWidget extends StatelessWidget {
@@ -80,38 +82,35 @@ class SidebarWidget extends StatelessWidget {
       items: [
         SidebarXItem(
           icon: Icons.home,
-          label: 'Home',
-          onTap: () {
-            // debugPrint('Home');
-          },
+          label: getTitleByIndex(0),
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.event_note,
-          label: 'log',
+          label: getTitleByIndex(1),
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.dns,
-          label: 'dns',
+          label: getTitleByIndex(2),
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.inbox,
-          label: 'inbounds',
+          label: getTitleByIndex(3),
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.outbox,
-          label: 'outbounds',
+          label: getTitleByIndex(4),
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.alt_route,
-          label: 'route',
+          label: getTitleByIndex(5),
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.security_update_warning,
-          label: 'experimental',
+          label: getTitleByIndex(6),
         ),
-        const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
-          label: 'About',
+        SidebarXItem(
+          iconWidget: const FlutterLogo(size: 20),
+          label: getTitleByIndex(7),
         ),
       ],
     );
