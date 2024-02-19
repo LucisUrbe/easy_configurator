@@ -1,3 +1,4 @@
+import 'package:easy_configurator/src/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -19,6 +20,7 @@ class ScreensWidget extends StatelessWidget {
         switch (controller.selectedIndex) {
           case 0:
             return ListView.builder(
+              itemCount: 5,
               padding: const EdgeInsets.only(top: 10),
               itemBuilder: (context, index) => Container(
                 height: 100,
@@ -28,6 +30,12 @@ class ScreensWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   color: Theme.of(context).canvasColor,
                   boxShadow: const [BoxShadow()],
+                ),
+                child: Center(
+                  child: Text(
+                    index.toString(),
+                    style: const TextStyle(color: white),
+                  ),
                 ),
               ),
             );
@@ -47,18 +55,20 @@ String getTitleByIndex(int index) {
     case 0:
       return 'Home';
     case 1:
-      return 'Search';
+      return 'log';
     case 2:
-      return 'People';
+      return 'dns';
     case 3:
-      return 'Favorites';
+      return 'inbounds';
     case 4:
-      return 'Custom iconWidget';
+      return 'outbounds';
     case 5:
-      return 'Profile';
+      return 'route';
     case 6:
-      return 'Settings';
+      return 'experimental';
+    case 7:
+      return 'About';
     default:
-      return 'Not found page';
+      return 'Not Found';
   }
 }
