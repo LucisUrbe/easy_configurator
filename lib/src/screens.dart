@@ -1,6 +1,8 @@
-import 'package:easy_configurator/src/sidebar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
+
+import 'sidebar.dart';
 
 class ScreensWidget extends StatelessWidget {
   const ScreensWidget({
@@ -16,7 +18,7 @@ class ScreensWidget extends StatelessWidget {
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
-        final pageTitle = getTitleByIndex(controller.selectedIndex);
+        final pageTitle = getTitleByIndex(controller.selectedIndex, context);
         switch (controller.selectedIndex) {
           case 0:
             return ListView.builder(
@@ -50,25 +52,20 @@ class ScreensWidget extends StatelessWidget {
   }
 }
 
-String getTitleByIndex(int index) {
-  switch (index) {
-    case 0:
-      return 'Home';
-    case 1:
-      return 'log';
-    case 2:
-      return 'dns';
-    case 3:
-      return 'inbounds';
-    case 4:
-      return 'outbounds';
-    case 5:
-      return 'route';
-    case 6:
-      return 'experimental';
-    case 7:
-      return 'About';
-    default:
-      return 'Not Found';
+String getTitleByIndex(int index, BuildContext context) {
+  var titles = [
+    AppLocalizations.of(context)!.home,
+    AppLocalizations.of(context)!.log,
+    AppLocalizations.of(context)!.dns,
+    AppLocalizations.of(context)!.inbounds,
+    AppLocalizations.of(context)!.outbounds,
+    AppLocalizations.of(context)!.route,
+    AppLocalizations.of(context)!.experimental,
+    AppLocalizations.of(context)!.about,
+  ];
+  if (index >= titles.length) {
+    return AppLocalizations.of(context)!.notFound;
+  } else {
+    return titles[index];
   }
 }

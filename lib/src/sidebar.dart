@@ -82,35 +82,35 @@ class SidebarWidget extends StatelessWidget {
       items: [
         SidebarXItem(
           icon: Icons.home,
-          label: getTitleByIndex(0),
+          label: getTitleByIndex(0, context),
         ),
         SidebarXItem(
           icon: Icons.event_note,
-          label: getTitleByIndex(1),
+          label: getTitleByIndex(1, context),
         ),
         SidebarXItem(
           icon: Icons.dns,
-          label: getTitleByIndex(2),
+          label: getTitleByIndex(2, context),
         ),
         SidebarXItem(
           icon: Icons.inbox,
-          label: getTitleByIndex(3),
+          label: getTitleByIndex(3, context),
         ),
         SidebarXItem(
           icon: Icons.outbox,
-          label: getTitleByIndex(4),
+          label: getTitleByIndex(4, context),
         ),
         SidebarXItem(
           icon: Icons.alt_route,
-          label: getTitleByIndex(5),
+          label: getTitleByIndex(5, context),
         ),
         SidebarXItem(
           icon: Icons.security_update_warning,
-          label: getTitleByIndex(6),
+          label: getTitleByIndex(6, context),
         ),
         SidebarXItem(
           iconWidget: const FlutterLogo(size: 20),
-          label: getTitleByIndex(7),
+          label: getTitleByIndex(7, context),
         ),
       ],
     );
