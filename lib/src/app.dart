@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -15,8 +17,17 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '@appTitle',
+      title: AppLocalizations.of(context)!.appTitle,
       // debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        AppLocalizations.delegate, // Add this line
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'), // English
+      ],
       theme: ThemeData(
         primaryColor: primaryColor,
         canvasColor: canvasColor,
@@ -38,7 +49,7 @@ class MainApp extends StatelessWidget {
                 ? AppBar(
                     foregroundColor: white,
                     backgroundColor: canvasColor,
-                    title: const Text('Easy Configurator'),
+                    title: Text(AppLocalizations.of(context)!.appTitle),
                     leading: IconButton(
                       onPressed: () {
                         if (!Platform.isAndroid && !Platform.isIOS) {

@@ -1,8 +1,17 @@
 {
   "@@locale": "en",
-  "@@author": "Lucis Urbe",
-  "appTitle": "Easy Configurator",
   "@appTitle": {
     "description": "The title of the application"
-  }
+  },
+  "appTitle": "Easy Configurator",
+  "notFound": "Not Found",
+  "home": "Home",
+  "log": "log",
+  "dns": "dns",
+  "inbounds": "inbounds",
+  "outbounds": "outbounds",
+  "route": "route",
+  "experimental": "experimental",
+  "about": "About",
+  "@@author": "Lucis Urbe"
 }
