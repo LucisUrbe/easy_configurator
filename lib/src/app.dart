@@ -17,7 +17,6 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppLocalizations.of(context)!.appTitle,
       // debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         AppLocalizations.delegate, // Add this line
@@ -28,7 +27,9 @@ class MainApp extends StatelessWidget {
       supportedLocales: const [
         Locale('en'), // English
       ],
+      title: 'Easy Configurator',
       theme: ThemeData(
+        useMaterial3: true,
         primaryColor: primaryColor,
         canvasColor: canvasColor,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
