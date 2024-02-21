@@ -10,6 +10,7 @@ const accentCanvasColor = Color.fromARGB(255, 62, 88, 97);
 const white = Colors.white;
 final actionColor = const Color.fromARGB(255, 95, 139, 167).withOpacity(0.6);
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
+const gray = Color.fromARGB(255, 150, 150, 150);
 
 class SidebarWidget extends StatelessWidget {
   const SidebarWidget({
@@ -79,40 +80,29 @@ class SidebarWidget extends StatelessWidget {
           ),
         );
       },
-      items: [
-        SidebarXItem(
-          icon: Icons.home,
-          label: getTitleByIndex(0, context),
-        ),
-        SidebarXItem(
-          icon: Icons.event_note,
-          label: getTitleByIndex(1, context),
-        ),
-        SidebarXItem(
-          icon: Icons.dns,
-          label: getTitleByIndex(2, context),
-        ),
-        SidebarXItem(
-          icon: Icons.inbox,
-          label: getTitleByIndex(3, context),
-        ),
-        SidebarXItem(
-          icon: Icons.outbox,
-          label: getTitleByIndex(4, context),
-        ),
-        SidebarXItem(
-          icon: Icons.alt_route,
-          label: getTitleByIndex(5, context),
-        ),
-        SidebarXItem(
-          icon: Icons.security_update_warning,
-          label: getTitleByIndex(6, context),
-        ),
-        SidebarXItem(
-          iconWidget: const FlutterLogo(size: 20),
-          label: getTitleByIndex(7, context),
-        ),
-      ],
+      items: generateSidebarXItems(context),
     );
   }
+}
+
+List<SidebarXItem> generateSidebarXItems(BuildContext context) {
+  List<IconData> icons = [
+    Icons.home,
+    Icons.event_note,
+    Icons.dns,
+    Icons.timer,
+    Icons.inbox,
+    Icons.outbox,
+    Icons.alt_route,
+    Icons.security_update_warning,
+  ];
+  List<SidebarXItem> items = [];
+  // Widget defaultIcon = const FlutterLogo(size: 20);
+  for (var i = 0; i < icons.length; i++) {
+    items.add(SidebarXItem(
+      icon: icons[i],
+      label: getTitleByIndex(i, context),
+    ));
+  }
+  return items;
 }

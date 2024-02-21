@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import 'sidebar.dart';
+import 'tabs.dart';
 
 class ScreensWidget extends StatelessWidget {
   const ScreensWidget({
@@ -21,6 +22,8 @@ class ScreensWidget extends StatelessWidget {
         final pageTitle = getTitleByIndex(controller.selectedIndex, context);
         switch (controller.selectedIndex) {
           case 0:
+            return const HomeWidget();
+          case 7:
             return ListView.builder(
               itemCount: 5,
               padding: const EdgeInsets.only(top: 10),
@@ -57,6 +60,7 @@ String getTitleByIndex(int index, BuildContext context) {
     AppLocalizations.of(context)!.home,
     AppLocalizations.of(context)!.log,
     AppLocalizations.of(context)!.dns,
+    AppLocalizations.of(context)!.ntp,
     AppLocalizations.of(context)!.inbounds,
     AppLocalizations.of(context)!.outbounds,
     AppLocalizations.of(context)!.route,
