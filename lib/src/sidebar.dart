@@ -95,6 +95,7 @@ List<SidebarXItem> generateSidebarXItems(BuildContext context) {
     Icons.outbox,
     Icons.alt_route,
     Icons.security_update_warning,
+    Icons.info_outline,
   ];
   List<SidebarXItem> items = [];
   // Widget defaultIcon = const FlutterLogo(size: 20);
