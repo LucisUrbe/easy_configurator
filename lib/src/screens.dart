@@ -23,7 +23,7 @@ class ScreensWidget extends StatelessWidget {
         switch (controller.selectedIndex) {
           case 0:
             return const HomeWidget();
-          case 7:
+          case 8:
             return ListView.builder(
               itemCount: 5,
               padding: const EdgeInsets.only(top: 10),
