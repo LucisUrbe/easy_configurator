@@ -7,6 +7,7 @@ import 'package:sidebarx/sidebarx.dart';
 
 import 'screens.dart';
 import 'sidebar.dart';
+import 'colors.dart';
 
 class MainApp extends StatelessWidget {
   MainApp({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
-        AppLocalizations.delegate, // Add this line
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

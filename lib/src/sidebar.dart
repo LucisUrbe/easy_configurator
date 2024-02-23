@@ -1,16 +1,8 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-import 'screens.dart';
-
-const primaryColor = Color.fromARGB(255, 91, 162, 255);
-const canvasColor = Color.fromARGB(255, 34, 60, 71);
-const scaffoldBackgroundColor = Color.fromARGB(255, 7, 39, 46);
-const accentCanvasColor = Color.fromARGB(255, 62, 88, 97);
-const white = Colors.white;
-final actionColor = const Color.fromARGB(255, 95, 139, 167).withOpacity(0.6);
-final divider = Divider(color: white.withOpacity(0.3), height: 1);
-const gray = Color.fromARGB(255, 150, 150, 150);
+import 'colors.dart';
 
 class SidebarWidget extends StatelessWidget {
   const SidebarWidget({
@@ -106,4 +98,23 @@ List<SidebarXItem> generateSidebarXItems(BuildContext context) {
     ));
   }
   return items;
+}
+
+String getTitleByIndex(int index, BuildContext context) {
+  var titles = [
+    AppLocalizations.of(context)!.home,
+    AppLocalizations.of(context)!.log,
+    AppLocalizations.of(context)!.dns,
+    AppLocalizations.of(context)!.ntp,
+    AppLocalizations.of(context)!.inbounds,
+    AppLocalizations.of(context)!.outbounds,
+    AppLocalizations.of(context)!.route,
+    AppLocalizations.of(context)!.experimental,
+    AppLocalizations.of(context)!.about,
+  ];
+  if (index >= titles.length) {
+    return AppLocalizations.of(context)!.notFound;
+  } else {
+    return titles[index];
+  }
 }

@@ -1,18 +1,19 @@
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:easy_configurator/src/sidebar.dart';
 import 'package:flutter/material.dart';
 
-// class CheckboxListTileApp extends StatelessWidget {
-//   const CheckboxListTileApp({super.key});
+import 'colors.dart';
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       theme: ThemeData(useMaterial3: true),
-//       home: const HomeWidget(),
-//     );
-//   }
-// }
+/// [CheckboxListTileApp] is never used.
+class CheckboxListTileApp extends StatelessWidget {
+  const CheckboxListTileApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
+      home: const HomeWidget(),
+    );
+  }
+}
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -22,13 +23,14 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  bool disabled = true;
+  bool checkedDisabled = true;
+  bool checkedLevel = true;
+  bool checkedOutput = false;
+  bool checkedTimestamp = true;
+
   bool disabledSelected = false;
   List<String> disabledList = <String>['false', 'true'];
   String disabledDropdownValue = 'false';
-  bool level = true;
-  bool output = false;
-  bool timestamp = true;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +46,10 @@ class _HomeWidgetState extends State<HomeWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: disabled,
+              value: checkedDisabled,
               onChanged: (bool? value) {
                 setState(() {
-                  disabled = value!;
+                  checkedDisabled = value!;
                 });
               },
               title: const Text(
@@ -59,7 +61,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                 style: TextStyle(color: gray),
               ),
             ),
-            disabled
+            checkedDisabled
                 ? SizedBox(
                     width: 200.0,
                     child: DropdownButton(
@@ -95,10 +97,10 @@ class _HomeWidgetState extends State<HomeWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: level,
+              value: checkedLevel,
               onChanged: (bool? value) {
                 setState(() {
-                  level = value!;
+                  checkedLevel = value!;
                 });
               },
               title: const Text(
@@ -115,10 +117,10 @@ class _HomeWidgetState extends State<HomeWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: output,
+              value: checkedOutput,
               onChanged: (bool? value) {
                 setState(() {
-                  output = value!;
+                  checkedOutput = value!;
                 });
               },
               title: const Text(
@@ -135,10 +137,10 @@ class _HomeWidgetState extends State<HomeWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: timestamp,
+              value: checkedTimestamp,
               onChanged: (bool? value) {
                 setState(() {
-                  timestamp = value!;
+                  checkedTimestamp = value!;
                 });
               },
               title: const Text(
