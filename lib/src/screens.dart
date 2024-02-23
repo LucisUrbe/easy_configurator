@@ -1,7 +1,7 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
+import 'colors.dart';
 import 'sidebar.dart';
 import 'tabs.dart';
 
@@ -52,24 +52,5 @@ class ScreensWidget extends StatelessWidget {
         }
       },
     );
-  }
-}
-
-String getTitleByIndex(int index, BuildContext context) {
-  var titles = [
-    AppLocalizations.of(context)!.home,
-    AppLocalizations.of(context)!.log,
-    AppLocalizations.of(context)!.dns,
-    AppLocalizations.of(context)!.ntp,
-    AppLocalizations.of(context)!.inbounds,
-    AppLocalizations.of(context)!.outbounds,
-    AppLocalizations.of(context)!.route,
-    AppLocalizations.of(context)!.experimental,
-    AppLocalizations.of(context)!.about,
-  ];
-  if (index >= titles.length) {
-    return AppLocalizations.of(context)!.notFound;
-  } else {
-    return titles[index];
   }
 }
