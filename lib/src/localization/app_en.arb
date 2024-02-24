@@ -1,9 +1,10 @@
 {
+  "@@author": "Lucis Urbe",
   "@@locale": "en",
+  "appTitle": "Easy Configurator",
   "@appTitle": {
     "description": "The title of the application"
   },
-  "appTitle": "Easy Configurator",
   "notFound": "Not Found",
   "home": "Home",
   "log": "Log",
@@ -14,5 +15,7 @@
   "route": "Route",
   "experimental": "Experimental",
   "about": "About",
-  "@@author": "Lucis Urbe"
+  "disableLogging": "Disable Logging",
+  "disableLoggingSubtitle": "Disable logging, no output after start.",
+  "outputHintText": "Enter output file path and name"
 }

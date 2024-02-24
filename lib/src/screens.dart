@@ -21,8 +21,8 @@ class ScreensWidget extends StatelessWidget {
       builder: (context, child) {
         final pageTitle = getTitleByIndex(controller.selectedIndex, context);
         switch (controller.selectedIndex) {
-          case 0:
-            return const HomeWidget();
+          case 1:
+            return const LogTabWidget();
           case 8:
             return ListView.builder(
               itemCount: 5,
