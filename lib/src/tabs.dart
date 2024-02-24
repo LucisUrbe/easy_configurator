@@ -1,3 +1,4 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
@@ -10,19 +11,19 @@ class CheckboxListTileApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
-      home: const HomeWidget(),
+      home: const LogTabWidget(),
     );
   }
 }
 
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({super.key});
+class LogTabWidget extends StatefulWidget {
+  const LogTabWidget({super.key});
 
   @override
-  State<HomeWidget> createState() => _HomeWidgetState();
+  State<LogTabWidget> createState() => _LogTabWidgetState();
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _LogTabWidgetState extends State<LogTabWidget> {
   bool checkedDisabled = true;
   bool checkedLevel = true;
   bool checkedOutput = false;
@@ -31,6 +32,24 @@ class _HomeWidgetState extends State<HomeWidget> {
   bool disabledSelected = false;
   List<String> disabledList = <String>['false', 'true'];
   String disabledDropdownValue = 'false';
+
+  List<String> levelList = <String>[
+    'trace',
+    'debug',
+    'info',
+    'warn',
+    'error',
+    'fatal',
+    'panic',
+  ];
+  String levelDropdownValue = 'info';
+
+  bool outputSelected = false;
+  String outputPath = 'box.log';
+
+  bool timestampSelected = true;
+  List<String> timestampList = <String>['true', 'false'];
+  String timestampDropdownValue = 'true';
 
   @override
   Widget build(BuildContext context) {
@@ -52,44 +71,53 @@ class _HomeWidgetState extends State<HomeWidget> {
                   checkedDisabled = value!;
                 });
               },
-              title: const Text(
-                'Disable logging',
-                style: TextStyle(color: white),
+              title: Text(
+                AppLocalizations.of(context)!.disableLogging,
+                style: const TextStyle(color: white),
               ),
-              subtitle: const Text(
-                'Disable logging, no output after start.',
-                style: TextStyle(color: gray),
+              subtitle: Text(
+                AppLocalizations.of(context)!.disableLoggingSubtitle,
+                style: const TextStyle(color: gray),
               ),
             ),
             checkedDisabled
-                ? SizedBox(
-                    width: 200.0,
-                    child: DropdownButton(
-                        isExpanded: true,
-                        value: disabledDropdownValue,
-                        items: disabledList.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
-                              style: const TextStyle(color: white),
-                            ),
-                          );
-                        }).toList(),
-                        onChanged: (selectedValue) {
-                          if (selectedValue == 'false') {
-                            disabledSelected = false;
-                            setState(() {
-                              disabledDropdownValue = selectedValue!;
-                            });
-                          }
-                          if (selectedValue == 'true') {
-                            disabledSelected = true;
-                            setState(() {
-                              disabledDropdownValue = selectedValue!;
-                            });
-                          }
-                        }),
+                ? Row(
+                    children: [
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                      Expanded(
+                        child: DropdownButton(
+                            isExpanded: true,
+                            value: disabledDropdownValue,
+                            items: disabledList.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: const TextStyle(color: white),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (selectedValue) {
+                              if (selectedValue == 'false') {
+                                setState(() {
+                                  disabledSelected = false;
+                                  disabledDropdownValue = selectedValue!;
+                                });
+                              }
+                              if (selectedValue == 'true') {
+                                setState(() {
+                                  disabledSelected = true;
+                                  disabledDropdownValue = selectedValue!;
+                                });
+                              }
+                            }),
+                      ),
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                    ],
                   )
                 : Container(),
             const Divider(height: dividerHeight),
@@ -112,6 +140,38 @@ class _HomeWidgetState extends State<HomeWidget> {
                 style: TextStyle(color: gray),
               ),
             ),
+            checkedLevel
+                ? Row(
+                    children: [
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                      Expanded(
+                        child: DropdownButton(
+                          isExpanded: true,
+                          value: levelDropdownValue,
+                          items: levelList.map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: const TextStyle(color: white),
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (selectedValue) {
+                            setState(() {
+                              levelDropdownValue = selectedValue!;
+                            });
+                          },
+                        ),
+                      ),
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                    ],
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
             CheckboxListTile(
               hoverColor: gray,
@@ -132,6 +192,38 @@ class _HomeWidgetState extends State<HomeWidget> {
                 style: TextStyle(color: gray),
               ),
             ),
+            checkedOutput
+                ? Row(
+                    children: [
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                      Expanded(
+                        child: TextField(
+                          cursorColor: gray,
+                          style: const TextStyle(color: white),
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: white),
+                            ),
+                            hintText:
+                                AppLocalizations.of(context)!.outputHintText,
+                            hintStyle: const TextStyle(color: gray),
+                          ),
+                          onChanged: (inputString) {
+                            setState(() {
+                              outputPath = inputString;
+                            });
+                          },
+                        ),
+                      ),
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                    ],
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
             CheckboxListTile(
               hoverColor: gray,
@@ -152,10 +244,66 @@ class _HomeWidgetState extends State<HomeWidget> {
                 style: TextStyle(color: gray),
               ),
             ),
+            checkedTimestamp
+                ? Row(
+                    children: [
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                      Expanded(
+                        child: DropdownButton(
+                            isExpanded: true,
+                            value: timestampDropdownValue,
+                            items: timestampList.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: const TextStyle(color: white),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (selectedValue) {
+                              if (selectedValue == 'false') {
+                                setState(() {
+                                  timestampSelected = false;
+                                  timestampDropdownValue = selectedValue!;
+                                });
+                              }
+                              if (selectedValue == 'true') {
+                                setState(() {
+                                  timestampSelected = true;
+                                  timestampDropdownValue = selectedValue!;
+                                });
+                              }
+                            }),
+                      ),
+                      const VerticalDivider(
+                        width: 20.0,
+                      ),
+                    ],
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
           ],
         ),
       ),
     );
+  }
+}
+
+
+
+class NTPTabWidget extends StatefulWidget {
+  const NTPTabWidget({super.key});
+
+  @override
+  State<NTPTabWidget> createState() => _NTPTabWidgetState();
+}
+
+class _NTPTabWidgetState extends State<NTPTabWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
