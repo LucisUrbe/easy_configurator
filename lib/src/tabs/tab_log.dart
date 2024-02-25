@@ -1,7 +1,8 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
+import '../colors.dart';
+import '../store.dart';
 
 /// [CheckboxListTileApp] is never used.
 class CheckboxListTileApp extends StatelessWidget {
@@ -24,33 +25,6 @@ class LogTabWidget extends StatefulWidget {
 }
 
 class _LogTabWidgetState extends State<LogTabWidget> {
-  bool checkedDisabled = true;
-  bool checkedLevel = true;
-  bool checkedOutput = false;
-  bool checkedTimestamp = true;
-
-  bool disabledSelected = false;
-  List<String> disabledList = <String>['false', 'true'];
-  String disabledDropdownValue = 'false';
-
-  List<String> levelList = <String>[
-    'trace',
-    'debug',
-    'info',
-    'warn',
-    'error',
-    'fatal',
-    'panic',
-  ];
-  String levelDropdownValue = 'info';
-
-  bool outputSelected = false;
-  String outputPath = 'box.log';
-
-  bool timestampSelected = true;
-  List<String> timestampList = <String>['true', 'false'];
-  String timestampDropdownValue = 'true';
-
   @override
   Widget build(BuildContext context) {
     const dividerHeight = 5.0;
@@ -65,10 +39,10 @@ class _LogTabWidgetState extends State<LogTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: checkedDisabled,
+              value: ConfigStore.checkedDisabled,
               onChanged: (bool? value) {
                 setState(() {
-                  checkedDisabled = value!;
+                  ConfigStore.checkedDisabled = value!;
                 });
               },
               title: Text(
@@ -80,7 +54,7 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                 style: const TextStyle(color: gray),
               ),
             ),
-            checkedDisabled
+            ConfigStore.checkedDisabled
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -89,8 +63,8 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                       Expanded(
                         child: DropdownButton(
                             isExpanded: true,
-                            value: disabledDropdownValue,
-                            items: disabledList.map((String value) {
+                            value: ConfigStore.disabledDropdownValue,
+                            items: ConfigStore.disabledList.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(
@@ -102,14 +76,16 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                             onChanged: (selectedValue) {
                               if (selectedValue == 'false') {
                                 setState(() {
-                                  disabledSelected = false;
-                                  disabledDropdownValue = selectedValue!;
+                                  ConfigStore.disabledSelected = false;
+                                  ConfigStore.disabledDropdownValue =
+                                      selectedValue!;
                                 });
                               }
                               if (selectedValue == 'true') {
                                 setState(() {
-                                  disabledSelected = true;
-                                  disabledDropdownValue = selectedValue!;
+                                  ConfigStore.disabledSelected = true;
+                                  ConfigStore.disabledDropdownValue =
+                                      selectedValue!;
                                 });
                               }
                             }),
@@ -125,22 +101,22 @@ class _LogTabWidgetState extends State<LogTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: checkedLevel,
+              value: ConfigStore.checkedLevel,
               onChanged: (bool? value) {
                 setState(() {
-                  checkedLevel = value!;
+                  ConfigStore.checkedLevel = value!;
                 });
               },
-              title: const Text(
-                'Log level',
-                style: TextStyle(color: white),
+              title: Text(
+                AppLocalizations.of(context)!.logLevel,
+                style: const TextStyle(color: white),
               ),
-              subtitle: const Text(
-                'One of: trace debug info warn error fatal panic.',
-                style: TextStyle(color: gray),
+              subtitle: Text(
+                AppLocalizations.of(context)!.logLevelSubtitle,
+                style: const TextStyle(color: gray),
               ),
             ),
-            checkedLevel
+            ConfigStore.checkedLevel
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -149,8 +125,8 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                       Expanded(
                         child: DropdownButton(
                           isExpanded: true,
-                          value: levelDropdownValue,
-                          items: levelList.map((String value) {
+                          value: ConfigStore.levelDropdownValue,
+                          items: ConfigStore.levelList.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(
@@ -161,7 +137,7 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                           }).toList(),
                           onChanged: (selectedValue) {
                             setState(() {
-                              levelDropdownValue = selectedValue!;
+                              ConfigStore.levelDropdownValue = selectedValue!;
                             });
                           },
                         ),
@@ -177,22 +153,22 @@ class _LogTabWidgetState extends State<LogTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: checkedOutput,
+              value: ConfigStore.checkedOutput,
               onChanged: (bool? value) {
                 setState(() {
-                  checkedOutput = value!;
+                  ConfigStore.checkedOutput = value!;
                 });
               },
-              title: const Text(
-                'Output file path',
-                style: TextStyle(color: white),
+              title: Text(
+                AppLocalizations.of(context)!.outputFilePath,
+                style: const TextStyle(color: white),
               ),
-              subtitle: const Text(
-                'Will not write log to console after enable.',
-                style: TextStyle(color: gray),
+              subtitle: Text(
+                AppLocalizations.of(context)!.outputFilePathSubtitle,
+                style: const TextStyle(color: gray),
               ),
             ),
-            checkedOutput
+            ConfigStore.checkedOutput
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -213,7 +189,7 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                           ),
                           onChanged: (inputString) {
                             setState(() {
-                              outputPath = inputString;
+                              ConfigStore.outputPath = inputString;
                             });
                           },
                         ),
@@ -229,22 +205,22 @@ class _LogTabWidgetState extends State<LogTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: checkedTimestamp,
+              value: ConfigStore.checkedTimestamp,
               onChanged: (bool? value) {
                 setState(() {
-                  checkedTimestamp = value!;
+                  ConfigStore.checkedTimestamp = value!;
                 });
               },
-              title: const Text(
-                'Show timestamp',
-                style: TextStyle(color: white),
+              title: Text(
+                AppLocalizations.of(context)!.showTimestamp,
+                style: const TextStyle(color: white),
               ),
-              subtitle: const Text(
-                'Add time to each line.',
-                style: TextStyle(color: gray),
+              subtitle: Text(
+                AppLocalizations.of(context)!.showTimestampSubtitle,
+                style: const TextStyle(color: gray),
               ),
             ),
-            checkedTimestamp
+            ConfigStore.checkedTimestamp
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -253,8 +229,9 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                       Expanded(
                         child: DropdownButton(
                             isExpanded: true,
-                            value: timestampDropdownValue,
-                            items: timestampList.map((String value) {
+                            value: ConfigStore.timestampDropdownValue,
+                            items:
+                                ConfigStore.timestampList.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(
@@ -266,14 +243,16 @@ class _LogTabWidgetState extends State<LogTabWidget> {
                             onChanged: (selectedValue) {
                               if (selectedValue == 'false') {
                                 setState(() {
-                                  timestampSelected = false;
-                                  timestampDropdownValue = selectedValue!;
+                                  ConfigStore.timestampSelected = false;
+                                  ConfigStore.timestampDropdownValue =
+                                      selectedValue!;
                                 });
                               }
                               if (selectedValue == 'true') {
                                 setState(() {
-                                  timestampSelected = true;
-                                  timestampDropdownValue = selectedValue!;
+                                  ConfigStore.timestampSelected = true;
+                                  ConfigStore.timestampDropdownValue =
+                                      selectedValue!;
                                 });
                               }
                             }),
@@ -289,21 +268,5 @@ class _LogTabWidgetState extends State<LogTabWidget> {
         ),
       ),
     );
-  }
-}
-
-
-
-class NTPTabWidget extends StatefulWidget {
-  const NTPTabWidget({super.key});
-
-  @override
-  State<NTPTabWidget> createState() => _NTPTabWidgetState();
-}
-
-class _NTPTabWidgetState extends State<NTPTabWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

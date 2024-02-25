@@ -3,7 +3,9 @@ import 'package:sidebarx/sidebarx.dart';
 
 import 'colors.dart';
 import 'sidebar.dart';
-import 'tabs.dart';
+import 'tabs/tab_log.dart';
+import 'tabs/tab_ntp.dart';
+import 'tabs/tab_experimental.dart';
 
 class ScreensWidget extends StatelessWidget {
   const ScreensWidget({
@@ -23,6 +25,10 @@ class ScreensWidget extends StatelessWidget {
         switch (controller.selectedIndex) {
           case 1:
             return const LogTabWidget();
+          case 3:
+            return const NTPTabWidget();
+          case 7:
+            return const ExperimentalTabWidget();
           case 8:
             return ListView.builder(
               itemCount: 5,
