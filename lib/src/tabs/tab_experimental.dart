@@ -26,10 +26,10 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.checkedCacheFile,
+              value: ConfigStore.expCheckedCacheFile,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.checkedCacheFile = value!;
+                  ConfigStore.expCheckedCacheFile = value!;
                 });
               },
               title: Text(
@@ -37,7 +37,7 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
-            ConfigStore.checkedCacheFile
+            ConfigStore.expCheckedCacheFile
                 ? ListTile(
                     title: Text(AppLocalizations.of(context)!.cacheFile),
                     titleTextStyle: const TextStyle(color: white),
@@ -57,10 +57,10 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.checkedClashAPI,
+              value: ConfigStore.expCheckedClashAPI,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.checkedClashAPI = value!;
+                  ConfigStore.expCheckedClashAPI = value!;
                 });
               },
               title: Text(
@@ -73,10 +73,10 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.checkedV2RayAPI,
+              value: ConfigStore.expCheckedV2RayAPI,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.checkedV2RayAPI = value!;
+                  ConfigStore.expCheckedV2RayAPI = value!;
                 });
               },
               title: Text(
