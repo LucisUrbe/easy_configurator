@@ -1,14 +1,21 @@
-class ConfigStore {
-  static bool logCheckedDisabled = true;
-  static bool logCheckedLevel = true;
-  static bool logCheckedOutput = false;
-  static bool logCheckedTimestamp = true;
+class LogCheckedStore {
+  static bool disabled = true;
+  static bool level = true;
+  static bool output = false;
+  static bool timestamp = true;
+}
 
-  static bool logDisabledSelected = false;
-  static List<String> logDisabledList = <String>['false', 'true'];
-  static String logDisabledDropdownValue = 'false';
+class LogConfigStore {
+  static bool disabledSelected = false;
+  static String levelDropdownValue = 'info';
+  static String outputPath = 'box.log';
+  static bool timestampSelected = true;
+}
 
-  static List<String> logLevelList = <String>[
+class LogSelectionStore {
+  static List<String> disabledList = <String>['false', 'true'];
+  static String disabledDropdownValue = 'false';
+  static List<String> levelList = <String>[
     'trace',
     'debug',
     'info',
@@ -17,52 +24,80 @@ class ConfigStore {
     'fatal',
     'panic',
   ];
-  static String logLevelDropdownValue = 'info';
+  static List<String> timestampList = <String>['true', 'false'];
+  static String timestampDropdownValue = 'true';
+}
 
-  static bool logOutputSelected = false;
-  static String logOutputPath = 'box.log';
+class NTPCheckedStore {
+  static bool enabled = true;
+  static bool server = false;
+  static bool serverPort = false;
+  static bool interval = false;
+}
 
-  static bool logTimestampSelected = true;
-  static List<String> logTimestampList = <String>['true', 'false'];
-  static String logTimestampDropdownValue = 'true';
+class NTPConfigStore {
+  static bool enabledSelected = false;
+  static String serverAddress = 'time.apple.com';
+  static int serverPortInteger = 123;
+  static String interval = '30m';
+}
 
-  static bool ntpCheckedEnabled = true;
-  static bool ntpCheckedServer = false;
-  static bool ntpCheckedServerPort = false;
-  static bool ntpCheckedInterval = false;
+class NTPSelectionStore {
+  static List<String> enabledList = <String>['false', 'true'];
+  static String enabledDropdownValue = 'false';
+  static String serverPort = '123';
+}
 
-  static bool ntpEnabledSelected = false;
-  static List<String> ntpEnabledList = <String>['false', 'true'];
-  static String ntpEnabledDropdownValue = 'false';
-
-  static String ntpServerAddress = 'time.apple.com';
-  static String ntpServerPort = '123';
-  static int ntpServerPortInteger = 123;
-  static String ntpInterval = '30m';
-
+class ExpConfigStore {
   // Here, "exp" means "experimental".
-  static bool expCheckedCacheFile = false;
-  static bool expCheckedClashAPI = false;
-  static bool expCheckedV2RayAPI = false;
+  static bool cacheFile = false;
+  static bool clashAPI = false;
+  static bool v2RayAPI = false;
+}
 
-  // Here, "cf" means "cache file".
-  static bool cfCheckedEnabled = true;
-  static bool cfCheckedPath = false;
-  static bool cfCheckedCacheID = false;
-  static bool cfCheckedStoreFakeIP = true;
-  static bool cfCheckedStoreRDRC = true;
-  static bool cfCheckedRDRCTimeout = false;
+class CFCheckedStore {
+  // Here, "CF" means "cache file".
+  static bool enabled = true;
+  static bool path = false;
+  static bool cacheID = false;
+  static bool storeFakeIP = true;
+  static bool storeRDRC = true;
+  static bool rdrcTimeout = false;
+}
 
-  static bool cfEnabled = true;
-  static List<String> cfEnabledList = <String>['true', 'false'];
-  static String cfEnabledDropdownValue = 'true';
-  static String cfPath = "cache.db";
-  static String cfCacheID = "";
-  static bool cfStoreFakeIP = false;
-  static List<String> cfStoreFakeIPList = <String>['false', 'true'];
-  static String cfStoreFakeIPDropdownValue = 'false';
-  static bool cfStoreRDRC = false;
-  static List<String> cfStoreRDRCList = <String>['false', 'true'];
-  static String cfStoreRDRCDropdownValue = 'false';
-  static String cfRDRCTimeout = "7d";
+class CFConfigStore {
+  static bool enabled = true;
+  static String path = "cache.db";
+  static String cacheID = "";
+  static bool storeFakeIP = false;
+  static bool storeRDRC = false;
+  static String rdrcTimeout = "7d";
+}
+
+class CFSelectionStore {
+  static List<String> enabledList = <String>['true', 'false'];
+  static String enabledDropdownValue = 'true';
+  static List<String> storeFakeIPList = <String>['false', 'true'];
+  static String storeFakeIPDropdownValue = 'false';
+  static List<String> storeRDRCList = <String>['false', 'true'];
+  static String storeRDRCDropdownValue = 'false';
+}
+
+class CACheckedStore {
+  bool externalController = false;
+  bool externalUI = false;
+  bool externalUIDownloadURL = false;
+  bool externalUIDownloadDetour = false;
+  bool secret = false;
+  bool defaultMode = false;
+}
+
+class CAConfigStore {
+  String externalController = "127.0.0.1:9090";
+  String externalUI = "";
+  String externalUIDownloadURL =
+      "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip";
+  String externalUIDownloadDetour = "";
+  String secret = "";
+  String defaultMode = "Rule";
 }
