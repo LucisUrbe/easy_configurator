@@ -27,10 +27,10 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.cfCheckedEnabled,
+              value: CFCheckedStore.enabled,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.cfCheckedEnabled = value!;
+                  CFCheckedStore.enabled = value!;
                 });
               },
               title: Text(
@@ -38,7 +38,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
-            ConfigStore.cfCheckedEnabled
+            CFCheckedStore.enabled
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -47,9 +47,9 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                       Expanded(
                         child: DropdownButton(
                             isExpanded: true,
-                            value: ConfigStore.cfEnabledDropdownValue,
-                            items:
-                                ConfigStore.cfEnabledList.map((String value) {
+                            value: CFSelectionStore.enabledDropdownValue,
+                            items: CFSelectionStore.enabledList
+                                .map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(
@@ -61,15 +61,15 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                             onChanged: (selectedValue) {
                               if (selectedValue == 'false') {
                                 setState(() {
-                                  ConfigStore.cfEnabled = false;
-                                  ConfigStore.cfEnabledDropdownValue =
+                                  CFConfigStore.enabled = false;
+                                  CFSelectionStore.enabledDropdownValue =
                                       selectedValue!;
                                 });
                               }
                               if (selectedValue == 'true') {
                                 setState(() {
-                                  ConfigStore.cfEnabled = true;
-                                  ConfigStore.cfEnabledDropdownValue =
+                                  CFConfigStore.enabled = true;
+                                  CFSelectionStore.enabledDropdownValue =
                                       selectedValue!;
                                 });
                               }
@@ -86,10 +86,10 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.cfCheckedPath,
+              value: CFCheckedStore.path,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.cfCheckedPath = value!;
+                  CFCheckedStore.path = value!;
                 });
               },
               title: Text(
@@ -101,7 +101,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                 style: const TextStyle(color: gray),
               ),
             ),
-            ConfigStore.cfCheckedPath
+            CFCheckedStore.path
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -109,7 +109,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                       ),
                       Expanded(
                         child: TextFormField(
-                          initialValue: ConfigStore.cfPath,
+                          initialValue: CFConfigStore.path,
                           cursorColor: gray,
                           style: const TextStyle(color: white),
                           decoration: InputDecoration(
@@ -123,7 +123,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                           ),
                           onChanged: (inputString) {
                             setState(() {
-                              ConfigStore.cfPath = inputString;
+                              CFConfigStore.path = inputString;
                             });
                           },
                         ),
@@ -139,10 +139,10 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.cfCheckedCacheID,
+              value: CFCheckedStore.cacheID,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.cfCheckedCacheID = value!;
+                  CFCheckedStore.cacheID = value!;
                 });
               },
               title: Text(
@@ -154,7 +154,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                 style: const TextStyle(color: gray),
               ),
             ),
-            ConfigStore.cfCheckedCacheID
+            CFCheckedStore.cacheID
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -162,7 +162,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                       ),
                       Expanded(
                         child: TextFormField(
-                          initialValue: ConfigStore.cfCacheID,
+                          initialValue: CFConfigStore.cacheID,
                           cursorColor: gray,
                           style: const TextStyle(color: white),
                           decoration: InputDecoration(
@@ -176,7 +176,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                           ),
                           onChanged: (inputString) {
                             setState(() {
-                              ConfigStore.cfCacheID = inputString;
+                              CFConfigStore.cacheID = inputString;
                             });
                           },
                         ),
@@ -192,10 +192,10 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.cfCheckedStoreFakeIP,
+              value: CFCheckedStore.storeFakeIP,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.cfCheckedStoreFakeIP = value!;
+                  CFCheckedStore.storeFakeIP = value!;
                 });
               },
               title: Text(
@@ -203,7 +203,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
-            ConfigStore.cfCheckedStoreFakeIP
+            CFCheckedStore.storeFakeIP
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -212,8 +212,8 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                       Expanded(
                         child: DropdownButton(
                             isExpanded: true,
-                            value: ConfigStore.cfStoreFakeIPDropdownValue,
-                            items: ConfigStore.cfStoreFakeIPList
+                            value: CFSelectionStore.storeFakeIPDropdownValue,
+                            items: CFSelectionStore.storeFakeIPList
                                 .map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -226,15 +226,15 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                             onChanged: (selectedValue) {
                               if (selectedValue == 'false') {
                                 setState(() {
-                                  ConfigStore.cfStoreFakeIP = false;
-                                  ConfigStore.cfStoreFakeIPDropdownValue =
+                                  CFConfigStore.storeFakeIP = false;
+                                  CFSelectionStore.storeFakeIPDropdownValue =
                                       selectedValue!;
                                 });
                               }
                               if (selectedValue == 'true') {
                                 setState(() {
-                                  ConfigStore.cfStoreFakeIP = true;
-                                  ConfigStore.cfStoreFakeIPDropdownValue =
+                                  CFConfigStore.storeFakeIP = true;
+                                  CFSelectionStore.storeFakeIPDropdownValue =
                                       selectedValue!;
                                 });
                               }
@@ -251,10 +251,10 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.cfCheckedStoreRDRC,
+              value: CFCheckedStore.storeRDRC,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.cfCheckedStoreRDRC = value!;
+                  CFCheckedStore.storeRDRC = value!;
                 });
               },
               title: Text(
@@ -266,7 +266,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                 style: const TextStyle(color: gray),
               ),
             ),
-            ConfigStore.cfCheckedStoreRDRC
+            CFCheckedStore.storeRDRC
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -275,9 +275,9 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                       Expanded(
                         child: DropdownButton(
                             isExpanded: true,
-                            value: ConfigStore.cfStoreRDRCDropdownValue,
-                            items:
-                                ConfigStore.cfStoreRDRCList.map((String value) {
+                            value: CFSelectionStore.storeRDRCDropdownValue,
+                            items: CFSelectionStore.storeRDRCList
+                                .map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(
@@ -289,15 +289,15 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                             onChanged: (selectedValue) {
                               if (selectedValue == 'false') {
                                 setState(() {
-                                  ConfigStore.cfStoreRDRC = false;
-                                  ConfigStore.cfStoreRDRCDropdownValue =
+                                  CFConfigStore.storeRDRC = false;
+                                  CFSelectionStore.storeRDRCDropdownValue =
                                       selectedValue!;
                                 });
                               }
                               if (selectedValue == 'true') {
                                 setState(() {
-                                  ConfigStore.cfStoreRDRC = true;
-                                  ConfigStore.cfStoreRDRCDropdownValue =
+                                  CFConfigStore.storeRDRC = true;
+                                  CFSelectionStore.storeRDRCDropdownValue =
                                       selectedValue!;
                                 });
                               }
@@ -314,10 +314,10 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.cfCheckedRDRCTimeout,
+              value: CFCheckedStore.rdrcTimeout,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.cfCheckedRDRCTimeout = value!;
+                  CFCheckedStore.rdrcTimeout = value!;
                 });
               },
               title: Text(
@@ -329,7 +329,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                 style: const TextStyle(color: gray),
               ),
             ),
-            ConfigStore.cfCheckedRDRCTimeout
+            CFCheckedStore.rdrcTimeout
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -337,7 +337,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                       ),
                       Expanded(
                         child: TextFormField(
-                          initialValue: ConfigStore.cfRDRCTimeout,
+                          initialValue: CFConfigStore.rdrcTimeout,
                           cursorColor: gray,
                           style: const TextStyle(color: white),
                           decoration: InputDecoration(
@@ -351,7 +351,7 @@ class _CacheFileWidgetState extends State<CacheFileWidget> {
                           ),
                           onChanged: (inputString) {
                             setState(() {
-                              ConfigStore.cfRDRCTimeout = inputString;
+                              CFConfigStore.rdrcTimeout = inputString;
                             });
                           },
                         ),

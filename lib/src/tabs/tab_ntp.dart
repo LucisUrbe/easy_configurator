@@ -25,10 +25,10 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.ntpCheckedEnabled,
+              value: NTPCheckedStore.enabled,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.ntpCheckedEnabled = value!;
+                  NTPCheckedStore.enabled = value!;
                 });
               },
               title: Text(
@@ -40,7 +40,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                 style: const TextStyle(color: gray),
               ),
             ),
-            ConfigStore.ntpCheckedEnabled
+            NTPCheckedStore.enabled
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -49,8 +49,9 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                       Expanded(
                         child: DropdownButton(
                             isExpanded: true,
-                            value: ConfigStore.ntpEnabledDropdownValue,
-                            items: ConfigStore.ntpEnabledList.map((String value) {
+                            value: NTPSelectionStore.enabledDropdownValue,
+                            items: NTPSelectionStore.enabledList
+                                .map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(
@@ -62,18 +63,18 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                             onChanged: (selectedValue) {
                               if (selectedValue == 'false') {
                                 setState(() {
-                                  ConfigStore.ntpEnabledSelected = false;
-                                  ConfigStore.ntpEnabledDropdownValue =
+                                  NTPConfigStore.enabledSelected = false;
+                                  NTPSelectionStore.enabledDropdownValue =
                                       selectedValue!;
-                                  ConfigStore.ntpCheckedServer = false;
+                                  NTPCheckedStore.server = false;
                                 });
                               }
                               if (selectedValue == 'true') {
                                 setState(() {
-                                  ConfigStore.ntpEnabledSelected = true;
-                                  ConfigStore.ntpEnabledDropdownValue =
+                                  NTPConfigStore.enabledSelected = true;
+                                  NTPSelectionStore.enabledDropdownValue =
                                       selectedValue!;
-                                  ConfigStore.ntpCheckedServer = true;
+                                  NTPCheckedStore.server = true;
                                 });
                               }
                             }),
@@ -85,16 +86,14 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                   )
                 : Container(),
             const Divider(height: dividerHeight),
-            ConfigStore.ntpCheckedServer
+            NTPCheckedStore.server
                 ? CheckboxListTile(
                     enabled: false,
                     hoverColor: gray,
                     activeColor: actionColor,
                     controlAffinity: ListTileControlAffinity.leading,
-                    value: ConfigStore.ntpCheckedServer,
-                    onChanged: (bool? value) {
-                      setState(() {});
-                    },
+                    value: NTPCheckedStore.server,
+                    onChanged: (_) {},
                     title: Text(
                       AppLocalizations.of(context)!.ntpServer,
                       style: const TextStyle(color: white),
@@ -105,7 +104,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                     ),
                   )
                 : Container(),
-            ConfigStore.ntpCheckedServer
+            NTPCheckedStore.server
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -113,7 +112,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                       ),
                       Expanded(
                         child: TextFormField(
-                          initialValue: ConfigStore.ntpServerAddress,
+                          initialValue: NTPConfigStore.serverAddress,
                           cursorColor: gray,
                           style: const TextStyle(color: white),
                           decoration: InputDecoration(
@@ -127,7 +126,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                           ),
                           onChanged: (inputString) {
                             setState(() {
-                              ConfigStore.ntpServerAddress = inputString;
+                              NTPConfigStore.serverAddress = inputString;
                             });
                           },
                         ),
@@ -138,15 +137,15 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                     ],
                   )
                 : Container(),
-            ConfigStore.ntpCheckedServer
+            NTPCheckedStore.server
                 ? CheckboxListTile(
                     hoverColor: gray,
                     activeColor: actionColor,
                     controlAffinity: ListTileControlAffinity.leading,
-                    value: ConfigStore.ntpCheckedServerPort,
+                    value: NTPCheckedStore.serverPort,
                     onChanged: (bool? value) {
                       setState(() {
-                        ConfigStore.ntpCheckedServerPort = value!;
+                        NTPCheckedStore.serverPort = value!;
                       });
                     },
                     title: Text(
@@ -159,7 +158,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                     ),
                   )
                 : Container(),
-            ConfigStore.ntpCheckedServer && ConfigStore.ntpCheckedServerPort
+            NTPCheckedStore.server && NTPCheckedStore.serverPort
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -167,7 +166,8 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                       ),
                       Expanded(
                         child: TextFormField(
-                          initialValue: ConfigStore.ntpServerPort,
+                          initialValue:
+                              NTPConfigStore.serverPortInteger.toString(),
                           cursorColor: gray,
                           style: const TextStyle(color: white),
                           decoration: InputDecoration(
@@ -181,10 +181,10 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                           ),
                           onChanged: (inputString) {
                             setState(() {
-                              ConfigStore.ntpServerPort = inputString;
-                              ConfigStore.ntpServerPortInteger =
-                                  int.tryParse(ConfigStore.ntpServerPort) ??
-                                      ConfigStore.ntpServerPortInteger;
+                              NTPSelectionStore.serverPort = inputString;
+                              NTPConfigStore.serverPortInteger =
+                                  int.tryParse(NTPSelectionStore.serverPort) ??
+                                      NTPConfigStore.serverPortInteger;
                             });
                           },
                         ),
@@ -195,15 +195,15 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                     ],
                   )
                 : Container(),
-            ConfigStore.ntpCheckedServer
+            NTPCheckedStore.server
                 ? CheckboxListTile(
                     hoverColor: gray,
                     activeColor: actionColor,
                     controlAffinity: ListTileControlAffinity.leading,
-                    value: ConfigStore.ntpCheckedInterval,
+                    value: NTPCheckedStore.interval,
                     onChanged: (bool? value) {
                       setState(() {
-                        ConfigStore.ntpCheckedInterval = value!;
+                        NTPCheckedStore.interval = value!;
                       });
                     },
                     title: Text(
@@ -216,7 +216,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                     ),
                   )
                 : Container(),
-            ConfigStore.ntpCheckedServer && ConfigStore.ntpCheckedInterval
+            NTPCheckedStore.server && NTPCheckedStore.interval
                 ? Row(
                     children: [
                       const VerticalDivider(
@@ -224,7 +224,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                       ),
                       Expanded(
                         child: TextFormField(
-                          initialValue: ConfigStore.ntpInterval,
+                          initialValue: NTPConfigStore.interval,
                           cursorColor: gray,
                           style: const TextStyle(color: white),
                           decoration: InputDecoration(
@@ -238,7 +238,7 @@ class _NTPTabWidgetState extends State<NTPTabWidget> {
                           ),
                           onChanged: (inputString) {
                             setState(() {
-                              ConfigStore.ntpInterval = inputString;
+                              NTPConfigStore.interval = inputString;
                             });
                           },
                         ),

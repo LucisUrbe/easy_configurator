@@ -26,10 +26,10 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.expCheckedCacheFile,
+              value: ExpConfigStore.cacheFile,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.expCheckedCacheFile = value!;
+                  ExpConfigStore.cacheFile = value!;
                 });
               },
               title: Text(
@@ -37,7 +37,7 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
-            ConfigStore.expCheckedCacheFile
+            ExpConfigStore.cacheFile
                 ? ListTile(
                     title: Text(AppLocalizations.of(context)!.cacheFile),
                     titleTextStyle: const TextStyle(color: white),
@@ -57,10 +57,10 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.expCheckedClashAPI,
+              value: ExpConfigStore.clashAPI,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.expCheckedClashAPI = value!;
+                  ExpConfigStore.clashAPI = value!;
                 });
               },
               title: Text(
@@ -73,10 +73,10 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
               hoverColor: gray,
               activeColor: actionColor,
               controlAffinity: ListTileControlAffinity.leading,
-              value: ConfigStore.expCheckedV2RayAPI,
+              value: ExpConfigStore.v2RayAPI,
               onChanged: (bool? value) {
                 setState(() {
-                  ConfigStore.expCheckedV2RayAPI = value!;
+                  ExpConfigStore.v2RayAPI = value!;
                 });
               },
               title: Text(
