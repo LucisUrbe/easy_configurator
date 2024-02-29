@@ -1,3 +1,4 @@
+import 'package:easy_configurator/src/tabs/experimental/clash_api.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -68,6 +69,21 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
+            ExpConfigStore.clashAPI
+                ? ListTile(
+                    title: Text(AppLocalizations.of(context)!.clashAPI),
+                    titleTextStyle: const TextStyle(color: white),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ClashAPIWidget(),
+                        ),
+                      );
+                    },
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
             CheckboxListTile(
               hoverColor: gray,

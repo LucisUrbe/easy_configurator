@@ -54,7 +54,7 @@
   "caExtCtrlSubtitle": "Clash API will be disabled if empty.",
   "caExtCtrlHintText": "Enter an address with a port",
   "caExtUI": "External UI: Static web resource path",
-  "caExtUISubtitle": "A relative path to the configuration directory or an absolute path to a directory in which you put some static web resource. sing-box will then serve it at http://{{external-controller}}/ui.",
+  "caExtUISubtitle": "A relative path to the configuration directory or an absolute path to a directory in which you put some static web resource.",
   "caExtUIHintText": "Enter a path",
   "caExtUIDlURL": "External UI: ZIP download URL",
   "caExtUIDlURLSubtitle": "It will be used if the specified external_ui directory is empty.",
