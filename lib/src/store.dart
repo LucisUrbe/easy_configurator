@@ -84,20 +84,20 @@ class CFSelectionStore {
 }
 
 class CACheckedStore {
-  bool externalController = false;
-  bool externalUI = false;
-  bool externalUIDownloadURL = false;
-  bool externalUIDownloadDetour = false;
-  bool secret = false;
-  bool defaultMode = false;
+  static bool externalController = false;
+  static bool externalUI = false;
+  static bool externalUIDownloadURL = false;
+  static bool externalUIDownloadDetour = false;
+  static bool secret = false;
+  static bool defaultMode = false;
 }
 
 class CAConfigStore {
-  String externalController = "127.0.0.1:9090";
-  String externalUI = "";
-  String externalUIDownloadURL =
+  static String externalController = "127.0.0.1:9090";
+  static String externalUI = "";
+  static String externalUIDownloadURL =
       "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip";
-  String externalUIDownloadDetour = "";
-  String secret = "";
-  String defaultMode = "Rule";
+  static String externalUIDownloadDetour = "";
+  static String secret = "";
+  static String defaultMode = "Rule";
 }
