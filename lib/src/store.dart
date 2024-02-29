@@ -67,11 +67,11 @@ class CFCheckedStore {
 
 class CFConfigStore {
   static bool enabled = true;
-  static String path = "cache.db";
-  static String cacheID = "";
+  static String path = 'cache.db';
+  static String cacheID = '';
   static bool storeFakeIP = false;
   static bool storeRDRC = false;
-  static String rdrcTimeout = "7d";
+  static String rdrcTimeout = '7d';
 }
 
 class CFSelectionStore {
@@ -93,11 +93,70 @@ class CACheckedStore {
 }
 
 class CAConfigStore {
-  static String externalController = "127.0.0.1:9090";
-  static String externalUI = "";
+  static String externalController = '127.0.0.1:9090';
+  static String externalUI = '';
   static String externalUIDownloadURL =
-      "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip";
-  static String externalUIDownloadDetour = "";
-  static String secret = "";
-  static String defaultMode = "Rule";
+      'https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip';
+  static String externalUIDownloadDetour = '';
+  static String secret = '';
+  static String defaultMode = 'Rule';
+}
+
+class DNSCheckedStore {
+  static bool servers = true;
+  static bool rules = true;
+  static bool finalTag = false;
+  static bool strategy = false;
+  static bool disableCache = false;
+  static bool disableExpire = false;
+  static bool independentCache = false;
+  static bool reverseMapping = false;
+  static bool fakeIP = false;
+}
+
+class DNSConfigStore {
+  static String finalTag = '';
+  static String strategyDropdownValue = 'ipv4_only';
+  static bool disableCache = false;
+  static bool disableExpire = false;
+  static bool independentCache = false;
+  static bool reverseMapping = false;
+}
+
+class DNSSelectionStore {
+  static List<String> strategyList = <String>[
+    'prefer_ipv4',
+    'prefer_ipv6',
+    'ipv4_only',
+    'ipv6_only'
+  ];
+  static List<String> disableCacheList = <String>['false', 'true'];
+  static String disableCacheDropdownValue = 'false';
+  static List<String> disableExpireList = <String>['false', 'true'];
+  static String disableExpireDropdownValue = 'false';
+  static List<String> independentList = <String>['false', 'true'];
+  static String independentDropdownValue = 'false';
+  static List<String> revMapList = <String>['false', 'true'];
+  static String revMapDropdownValue = 'false';
+}
+
+class DNSServerStore {
+  String tag = '';
+  String address = '';
+  String addressResolver = '';
+  String addressStrategy = '';
+  String strategy = '';
+  String detour = '';
+}
+
+class DNSRuleStore {
+  String ruleJsonStub = '';
+}
+
+class DNSServersStore {
+  static List<DNSServerStore> servers = [];
+}
+
+class DNSRulesStore {
+  static List<DNSRuleStore> rules = [];
 }

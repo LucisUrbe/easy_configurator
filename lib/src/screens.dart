@@ -4,6 +4,7 @@ import 'package:sidebarx/sidebarx.dart';
 import 'colors.dart';
 import 'sidebar.dart';
 import 'tabs/tab_log.dart';
+import 'tabs/tab_dns.dart';
 import 'tabs/tab_ntp.dart';
 import 'tabs/tab_experimental.dart';
 
@@ -25,6 +26,8 @@ class ScreensWidget extends StatelessWidget {
         switch (controller.selectedIndex) {
           case 1:
             return const LogTabWidget();
+          case 2:
+            return const DNSTabWidget();
           case 3:
             return const NTPTabWidget();
           case 7:
