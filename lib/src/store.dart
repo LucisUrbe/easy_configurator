@@ -170,5 +170,7 @@ class DNSRuleStore {
 }
 
 class DNSRulesStore {
-  static List<DNSRuleStore> rules = [];
+  static List<DNSRuleStore> rules = [
+    DNSRuleStore(),
+  ];
 }

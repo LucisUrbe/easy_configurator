@@ -89,6 +89,7 @@
   "dnsServerDetourSubtitle": "Tag of an outbound for connecting to the dns server. Default outbound will be used if empty.",
   "dnsServerDetourHintText": "Enter a tag of an outbound",
   "dnsRules": "DNS rules",
+  "dnsRuleJsonStubHintText": "Enter the entire JSON object of DNS rules here",
   "dnsFinal": "Default DNS server tag",
   "dnsFinalSubtitle": "The first server will be used if empty.",
   "dnsFinalHintText": "Enter a DNS tag",
