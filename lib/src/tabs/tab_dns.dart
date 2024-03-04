@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 import '../store.dart';
+import 'dns/servers.dart';
 
 class DNSTabWidget extends StatefulWidget {
   const DNSTabWidget({super.key});
@@ -36,6 +37,21 @@ class _DNSTabWidgetState extends State<DNSTabWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
+            DNSCheckedStore.servers
+                ? ListTile(
+                    title: Text(AppLocalizations.of(context)!.dnsServers),
+                    titleTextStyle: const TextStyle(color: white),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ServersTabWidget(),
+                        ),
+                      );
+                    },
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
             CheckboxListTile(
               hoverColor: gray,
