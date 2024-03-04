@@ -116,7 +116,7 @@ class DNSCheckedStore {
 
 class DNSConfigStore {
   static String finalTag = '';
-  static String strategyDropdownValue = 'ipv4_only';
+  static String strategyDropdownValue = 'prefer_ipv4';
   static bool disableCache = false;
   static bool disableExpire = false;
   static bool independentCache = false;
@@ -141,20 +141,32 @@ class DNSSelectionStore {
 }
 
 class DNSServerStore {
+  bool checkedTag = true;
+  bool checkedAddress = true;
+  bool checkedAR = false;
+  bool checkedAS = false;
+  bool checkedStrategy = false;
+  bool checkedDetour = false;
+  List<String> strategyList = <String>[
+    'prefer_ipv4',
+    'prefer_ipv6',
+    'ipv4_only',
+    'ipv6_only'
+  ];
   String tag = '';
   String address = '';
   String addressResolver = '';
-  String addressStrategy = '';
-  String strategy = '';
+  String addressStrategy = 'prefer_ipv4';
+  String strategy = 'prefer_ipv4';
   String detour = '';
-}
-
-class DNSRuleStore {
-  String ruleJsonStub = '';
 }
 
 class DNSServersStore {
   static List<DNSServerStore> servers = [];
+}
+
+class DNSRuleStore {
+  String ruleJsonStub = '';
 }
 
 class DNSRulesStore {
