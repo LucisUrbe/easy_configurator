@@ -384,11 +384,11 @@ class _DNSTabWidgetState extends State<DNSTabWidget> {
                 });
               },
               title: Text(
-                AppLocalizations.of(context)!.disableLogging,
+                AppLocalizations.of(context)!.dnsReverseMapping,
                 style: const TextStyle(color: white),
               ),
               subtitle: Text(
-                AppLocalizations.of(context)!.disableLoggingSubtitle,
+                AppLocalizations.of(context)!.dnsReverseMappingSubtitle,
                 style: const TextStyle(color: gray),
               ),
             ),
