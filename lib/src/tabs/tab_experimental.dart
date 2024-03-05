@@ -1,10 +1,10 @@
-import 'package:easy_configurator/src/tabs/experimental/clash_api.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import '../colors.dart';
 import '../store.dart';
 import 'experimental/cache_file.dart';
+import 'experimental/clash_api.dart';
 
 class ExperimentalTabWidget extends StatefulWidget {
   const ExperimentalTabWidget({super.key});

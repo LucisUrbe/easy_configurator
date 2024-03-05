@@ -102,5 +102,6 @@
   "dnsReverseMapping": "Enable reverse mapping",
   "dnsReverseMappingSubtitle": "Stores a reverse mapping of IP addresses after responding to a DNS query in order to provide domain names when routing. Problematic in macOS.",
   "dnsFakeIP": "Fake IP",
+  "homeGenerateConfig": "Generate config as a file",
   "dialFields": "Dial Fields"
 }

@@ -3,6 +3,7 @@ import 'package:sidebarx/sidebarx.dart';
 
 import 'colors.dart';
 import 'sidebar.dart';
+import 'tabs/tab_home.dart';
 import 'tabs/tab_log.dart';
 import 'tabs/tab_dns.dart';
 import 'tabs/tab_ntp.dart';
@@ -24,6 +25,8 @@ class ScreensWidget extends StatelessWidget {
       builder: (context, child) {
         final pageTitle = getTitleByIndex(controller.selectedIndex, context);
         switch (controller.selectedIndex) {
+          case 0:
+            return const HomeTabWidget();
           case 1:
             return const LogTabWidget();
           case 2:
