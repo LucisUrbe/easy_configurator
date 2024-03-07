@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'store.dart';
 
 Map<String, dynamic> logMap() {
@@ -83,6 +85,14 @@ Map<String, dynamic> dnsServerMap(DNSServerStore server) {
   };
 }
 
+Map<String, dynamic> dnsFakeIPMap() {
+  return {
+    if (DNSCheckedStore.fakeIP) 'enabled': DNSFakeIPStore.enabled,
+    if (DNSCheckedStore.fakeIP) 'inet4_range': DNSFakeIPStore.inet4Range,
+    if (DNSCheckedStore.fakeIP) 'inet6_range': DNSFakeIPStore.inet6Range,
+  };
+}
+
 Map<String, dynamic> buildConfig() {
   Map<String, dynamic> config = {};
   final logMapObject = logMap();
@@ -103,12 +113,14 @@ Map<String, dynamic> buildConfig() {
       "experimental": experimentalMapObject,
     });
   }
+  // The code below is a submodule of experimental.
   final cacheFileMapObject = cacheFileMap();
   if (cacheFileMapObject.isNotEmpty && ExpConfigStore.cacheFile) {
     config["experimental"].addAll({
-        "cache_file": cacheFileMapObject,
+      "cache_file": cacheFileMapObject,
     });
   }
+  // The code below is a submodule of experimental.
   final clashAPIMapObject = clashAPIMap();
   if (clashAPIMapObject.isNotEmpty && ExpConfigStore.clashAPI) {
     config["experimental"].addAll({
@@ -120,6 +132,23 @@ Map<String, dynamic> buildConfig() {
     config.addAll({
       "dns": dnsMapObject,
     });
+  }
+  // The code below is a submodule of DNS.
+  if (DNSServersStore.servers.isNotEmpty && DNSCheckedStore.servers) {
+    for (final server in DNSServersStore.servers) {
+      final dnsServerObject = dnsServerMap(server);
+      config["dns"]["servers"].add(dnsServerObject);
+    }
+  }
+  // The code below is a submodule of DNS.
+  if (DNSRulesStore.rules.first.ruleJsonStub.isNotEmpty &&
+      DNSCheckedStore.rules) {
+    config["dns"]["rules"] = jsonDecode(DNSRulesStore.rules.first.ruleJsonStub);
+  }
+  // The code below is a submodule of DNS.
+  final dnsFakeIPMapObject = dnsFakeIPMap();
+  if (dnsFakeIPMapObject.isNotEmpty && DNSCheckedStore.fakeIP) {
+    config["dns"]["fakeip"] = dnsFakeIPMapObject;
   }
   return config;
 }

@@ -174,3 +174,37 @@ class DNSRulesStore {
     DNSRuleStore(),
   ];
 }
+
+class DNSFakeIPStore {
+  static List<String> enabledList = <String>['false', 'true'];
+  static String enabledDropdownValue = 'false';
+  static bool enabled = false;
+  static String inet4Range = '198.18.0.0/15';
+  static String inet6Range = 'fc00::/18';
+}
+
+class RouteCheckedStore {
+  static bool rules = true;
+  static bool ruleSet = false;
+  static bool finalTag = false;
+  static bool autoDetectInterface = false;
+  static bool overrideAndroidVPN = false;
+  static bool defaultInterface = false;
+  static bool defaultMark = false;
+}
+
+class RouteConfigStore {
+  static String finalTag = '';
+  static bool autoDetectInterface = false;
+  static bool overrideAndroidVPN = false;
+  static String defaultInterface = 'en0';
+  static int defaultMark = 233;
+}
+
+class RouteSelectionStore {
+  static List<String> autoDIList = <String>['false', 'true'];
+  static String autoDIDropdownValue = 'false';
+  static List<String> overrideAVPNList = <String>['false', 'true'];
+  static String overrideAVPNDropdownValue = 'false';
+  static String defaultMark = '123';
+}
