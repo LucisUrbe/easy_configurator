@@ -5,6 +5,7 @@ import '../colors.dart';
 import '../store.dart';
 import 'dns/servers.dart';
 import 'dns/rules.dart';
+import 'dns/fakeip.dart';
 
 class DNSTabWidget extends StatefulWidget {
   const DNSTabWidget({super.key});
@@ -451,6 +452,21 @@ class _DNSTabWidgetState extends State<DNSTabWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
+            DNSCheckedStore.fakeIP
+                ? ListTile(
+                    title: Text(AppLocalizations.of(context)!.dnsFakeIP),
+                    titleTextStyle: const TextStyle(color: white),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FakeIPTabWidget(),
+                        ),
+                      );
+                    },
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
           ],
         ),
