@@ -93,6 +93,22 @@ Map<String, dynamic> dnsFakeIPMap() {
   };
 }
 
+Map<String, dynamic> routeMap() {
+  return {
+    if (RouteCheckedStore.rules) 'rules': [],
+    if (RouteCheckedStore.ruleSet) 'rule_set': [],
+    if (RouteCheckedStore.finalTag) 'final': RouteConfigStore.finalTag,
+    if (RouteCheckedStore.autoDetectInterface)
+      'auto_detect_interface': RouteConfigStore.autoDetectInterface,
+    if (RouteCheckedStore.overrideAndroidVPN)
+      'override_android_vpn': RouteConfigStore.overrideAndroidVPN,
+    if (RouteCheckedStore.defaultInterface)
+      'default_interface': RouteConfigStore.defaultInterface,
+    if (RouteCheckedStore.defaultMark)
+      'default_mark': RouteConfigStore.defaultMark,
+  };
+}
+
 Map<String, dynamic> buildConfig() {
   Map<String, dynamic> config = {};
   final logMapObject = logMap();
@@ -149,6 +165,12 @@ Map<String, dynamic> buildConfig() {
   final dnsFakeIPMapObject = dnsFakeIPMap();
   if (dnsFakeIPMapObject.isNotEmpty && DNSCheckedStore.fakeIP) {
     config["dns"]["fakeip"] = dnsFakeIPMapObject;
+  }
+  final routeMapObject = routeMap();
+  if (routeMapObject.isNotEmpty) {
+    config.addAll({
+      "route": routeMapObject,
+    });
   }
   return config;
 }
