@@ -81,7 +81,7 @@ class _ServersTabWidgetState extends State<ServersTabWidget> {
               onTap: () {
                 setState(() {
                   final newItem = DNSServerStore();
-                  newItem.tag = 'New Item';
+                  newItem.tag = AppLocalizations.of(context)!.newItem;
                   DNSServersStore.servers.add(newItem);
                 });
               },
