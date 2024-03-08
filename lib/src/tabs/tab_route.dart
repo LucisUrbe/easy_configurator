@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 import '../store.dart';
+import 'route/rule_set.dart';
 
 class RouteTabWidget extends StatefulWidget {
   const RouteTabWidget({super.key});
@@ -62,25 +63,25 @@ class _RouteTabWidgetState extends State<RouteTabWidget> {
                 });
               },
               title: Text(
-                AppLocalizations.of(context)!.dnsRules,
+                AppLocalizations.of(context)!.routeRuleSet,
                 style: const TextStyle(color: white),
               ),
             ),
-            // RouteCheckedStore.ruleSet
-            //     ? ListTile(
-            //         title: Text(AppLocalizations.of(context)!.dnsRules),
-            //         titleTextStyle: const TextStyle(color: white),
-            //         trailing: const Icon(Icons.keyboard_arrow_right),
-            //         onTap: () {
-            //           Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //               builder: (context) => const WhatTabWidget(),
-            //             ),
-            //           );
-            //         },
-            //       )
-            //     : Container(),
+            RouteCheckedStore.ruleSet
+                ? ListTile(
+                    title: Text(AppLocalizations.of(context)!.routeRuleSet),
+                    titleTextStyle: const TextStyle(color: white),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RuleSetsTabWidget(),
+                        ),
+                      );
+                    },
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
             CheckboxListTile(
               hoverColor: gray,

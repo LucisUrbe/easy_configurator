@@ -147,7 +147,7 @@ class DNSServerStore {
   bool checkedAS = false;
   bool checkedStrategy = false;
   bool checkedDetour = false;
-  List<String> strategyList = <String>[
+  final List<String> strategyList = <String>[
     'prefer_ipv4',
     'prefer_ipv6',
     'ipv4_only',
@@ -207,4 +207,24 @@ class RouteSelectionStore {
   static List<String> overrideAVPNList = <String>['false', 'true'];
   static String overrideAVPNDropdownValue = 'false';
   static String defaultMark = '123';
+}
+
+class RouteRuleSetStore {
+  bool checkedPath = true;
+  bool checkedURL = false;
+  bool checkedDowDet = false;
+  bool checkedUpdInv = false;
+  final List<String> typeList = <String>['local', 'remote'];
+  final List<String> formatList = <String>['source', 'binary'];
+  String type = 'local';
+  String tag = '';
+  String format = 'source';
+  String path = '';
+  String url = '';
+  String downloadDetour = '';
+  String updateInterval = '1d';
+}
+
+class RouteRuleSetsStore {
+  static List<RouteRuleSetStore> ruleSet = [];
 }
