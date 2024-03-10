@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 import '../store.dart';
+import 'route/rules.dart';
 import 'route/rule_set.dart';
 
 class RouteTabWidget extends StatefulWidget {
@@ -36,21 +37,21 @@ class _RouteTabWidgetState extends State<RouteTabWidget> {
                 style: const TextStyle(color: white),
               ),
             ),
-            // RouteCheckedStore.rules
-            //     ? ListTile(
-            //         title: Text(AppLocalizations.of(context)!.routeRules),
-            //         titleTextStyle: const TextStyle(color: white),
-            //         trailing: const Icon(Icons.keyboard_arrow_right),
-            //         onTap: () {
-            //           Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //               builder: (context) => const WhatTabWidget(),
-            //             ),
-            //           );
-            //         },
-            //       )
-            //     : Container(),
+            RouteCheckedStore.rules
+                ? ListTile(
+                    title: Text(AppLocalizations.of(context)!.routeRules),
+                    titleTextStyle: const TextStyle(color: white),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RulesTabWidget(),
+                        ),
+                      );
+                    },
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
             CheckboxListTile(
               hoverColor: gray,
