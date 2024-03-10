@@ -55,6 +55,18 @@ Map<String, dynamic> clashAPIMap() {
   };
 }
 
+Map<String, dynamic> v2RayMap() {
+  return {
+    if (VACheckedStore.listen) 'listen': VAConfigStore.listen,
+    "stats": {
+      if (VACheckedStore.statsEnabled) 'enabled': VAConfigStore.enabled,
+      if (VACheckedStore.statsInbounds) 'inbounds': VAConfigStore.inbounds,
+      if (VACheckedStore.statsOutbounds) 'outbounds': VAConfigStore.outbounds,
+      if (VACheckedStore.statsUsers) 'users': VAConfigStore.users,
+    },
+  };
+}
+
 Map<String, dynamic> dnsMap() {
   return {
     if (DNSCheckedStore.servers) 'servers': [],
@@ -153,6 +165,13 @@ Map<String, dynamic> buildConfig() {
   if (clashAPIMapObject.isNotEmpty && ExpConfigStore.clashAPI) {
     config["experimental"].addAll({
       "clash_api": clashAPIMapObject,
+    });
+  }
+  // The code below is a submodule of experimental.
+  final v2RayMapObject = v2RayMap();
+  if (v2RayMapObject.isNotEmpty && ExpConfigStore.v2RayAPI) {
+    config["experimental"].addAll({
+      "v2ray_api": v2RayMapObject,
     });
   }
   final dnsMapObject = dnsMap();

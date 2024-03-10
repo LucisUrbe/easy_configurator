@@ -121,7 +121,7 @@
   "routeRuleSet": "Route rule sets",
   "routeRuleSetSingular": "Rule set",
   "routeRuleSetType": "Type of rule set",
-  "routeRuleSetTag": "Format of rule set",
+  "routeRuleSetTag": "Tag of rule set",
   "routeRuleSetTagHintText": "Enter a name for the rule set",
   "routeRuleSetFormat": "Format of rule set",
   "routeRuleSetPath": "File path of rule set",

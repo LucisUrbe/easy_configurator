@@ -5,6 +5,7 @@ import '../colors.dart';
 import '../store.dart';
 import 'experimental/cache_file.dart';
 import 'experimental/clash_api.dart';
+import 'experimental/v2ray_api.dart';
 
 class ExperimentalTabWidget extends StatefulWidget {
   const ExperimentalTabWidget({super.key});
@@ -104,6 +105,21 @@ class _ExperimentalTabWidgetState extends State<ExperimentalTabWidget> {
                 style: const TextStyle(color: gray),
               ),
             ),
+            ExpConfigStore.v2RayAPI
+                ? ListTile(
+                    title: Text(AppLocalizations.of(context)!.v2RayAPI),
+                    titleTextStyle: const TextStyle(color: white),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const V2RayAPIWidget(),
+                        ),
+                      );
+                    },
+                  )
+                : Container(),
             const Divider(height: dividerHeight),
           ],
         ),
