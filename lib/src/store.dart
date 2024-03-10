@@ -84,6 +84,7 @@ class CFSelectionStore {
 }
 
 class CACheckedStore {
+  // Here, "CA" means "Clash API".
   static bool externalController = false;
   static bool externalUI = false;
   static bool externalUIDownloadURL = false;
@@ -100,6 +101,28 @@ class CAConfigStore {
   static String externalUIDownloadDetour = '';
   static String secret = '';
   static String defaultMode = 'Rule';
+}
+
+class VACheckedStore {
+  // Here, "VA" means "V2Ray API".
+  static bool listen = false;
+  static bool statsEnabled = false;
+  static bool statsInbounds = false;
+  static bool statsOutbounds = false;
+  static bool statsUsers = false;
+}
+
+class VAConfigStore {
+  static String listen = '127.0.0.1:8080';
+  static bool enabled = false;
+  static List<String> inbounds = [];
+  static List<String> outbounds = [];
+  static List<String> users = [];
+}
+
+class VASelectionStore {
+  static List<String> enabledList = <String>['false', 'true'];
+  static String enabledDropdownValue = 'true';
 }
 
 class DNSCheckedStore {
@@ -227,4 +250,14 @@ class RouteRuleSetStore {
 
 class RouteRuleSetsStore {
   static List<RouteRuleSetStore> ruleSet = [];
+}
+
+class RouteRuleStore {
+  String ruleJsonStub = '';
+}
+
+class RouteRulesStore {
+  static List<RouteRuleStore> rules = [
+    RouteRuleStore(),
+  ];
 }

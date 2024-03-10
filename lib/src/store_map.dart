@@ -109,6 +109,18 @@ Map<String, dynamic> routeMap() {
   };
 }
 
+Map<String, dynamic> routeRuleSetMap(RouteRuleSetStore ruleSet) {
+  return {
+    'type': ruleSet.type,
+    'tag': ruleSet.tag,
+    'format': ruleSet.format,
+    if (ruleSet.checkedPath) 'path': ruleSet.path,
+    if (ruleSet.checkedURL) 'url': ruleSet.url,
+    if (ruleSet.checkedDowDet) 'download_detour': ruleSet.downloadDetour,
+    if (ruleSet.checkedUpdInv) 'update_interval': ruleSet.updateInterval,
+  };
+}
+
 Map<String, dynamic> buildConfig() {
   Map<String, dynamic> config = {};
   final logMapObject = logMap();
@@ -171,6 +183,19 @@ Map<String, dynamic> buildConfig() {
     config.addAll({
       "route": routeMapObject,
     });
+  }
+  // The code below is a submodule of route.
+  if (RouteRuleSetsStore.ruleSet.isNotEmpty && RouteCheckedStore.ruleSet) {
+    for (final ruleSet in RouteRuleSetsStore.ruleSet) {
+      final ruleSetObject = routeRuleSetMap(ruleSet);
+      config["route"]["rule_set"].add(ruleSetObject);
+    }
+  }
+  // The code below is a submodule of route.
+  if (RouteRulesStore.rules.first.ruleJsonStub.isNotEmpty &&
+      RouteCheckedStore.rules) {
+    config["route"]["rules"] =
+        jsonDecode(RouteRulesStore.rules.first.ruleJsonStub);
   }
   return config;
 }
