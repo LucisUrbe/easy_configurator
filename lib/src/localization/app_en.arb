@@ -148,5 +148,6 @@
   "routeDefMarkSubtitle": "Only supported on Linux. Set routing mark by default. Takes no effect if outbound.routing_mark is set.",
   "routeDefMarkHintText": "Enter an integer like: 233",
   "homeGenerateConfig": "Generate config as a file",
+  "homeLoadConfig": "Load config from a file",
   "dialFields": "Dial Fields"
 }
