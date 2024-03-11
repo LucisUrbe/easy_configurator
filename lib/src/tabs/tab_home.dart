@@ -7,6 +7,7 @@ import 'package:file_picker/file_picker.dart';
 
 import '../colors.dart';
 import '../store_map.dart';
+import '../map_store.dart';
 
 class HomeTabWidget extends StatefulWidget {
   const HomeTabWidget({super.key});
@@ -42,6 +43,32 @@ class _HomeTabWidgetState extends State<HomeTabWidget> {
                   );
                   final File file = File(outputFile!);
                   await file.writeAsString(jsonEncode(buildConfig()));
+                }
+              },
+            ),
+            const Divider(height: dividerHeight),
+            ListTile(
+              title: Text(AppLocalizations.of(context)!.homeLoadConfig),
+              titleTextStyle: const TextStyle(color: white),
+              trailing: const Icon(
+                Icons.import_export,
+                color: white,
+              ),
+              onTap: () async {
+                // set state here if needed
+                if (Platform.isWindows ||
+                    Platform.isMacOS ||
+                    Platform.isLinux) {
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles();
+                  if (result != null) {
+                    File file = File(result.files.single.path!);
+                    final jsonString = await file.readAsString();
+                    const JsonDecoder decoder = JsonDecoder();
+                    final Map<String, dynamic> jsonObject =
+                        decoder.convert(jsonString);
+                    loadConfig(jsonObject);
+                  }
                 }
               },
             ),
