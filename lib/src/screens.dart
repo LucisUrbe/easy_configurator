@@ -7,6 +7,8 @@ import 'tabs/tab_home.dart';
 import 'tabs/tab_log.dart';
 import 'tabs/tab_dns.dart';
 import 'tabs/tab_ntp.dart';
+import 'tabs/tab_inbounds.dart';
+import 'tabs/tab_outbounds.dart';
 import 'tabs/tab_route.dart';
 import 'tabs/tab_experimental.dart';
 
@@ -34,6 +36,10 @@ class ScreensWidget extends StatelessWidget {
             return const DNSTabWidget();
           case 3:
             return const NTPTabWidget();
+          case 4:
+            return const InboundsTabWidget();
+          case 5:
+            return const OutboundsTabWidget();
           case 6:
             return const RouteTabWidget();
           case 7:

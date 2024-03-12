@@ -1,24 +1,16 @@
 # easy_configurator
 
-A new Flutter project.
+An easy Flutter project to generate a JSON with appropriate interactions with a GUI.
 
-## Getting Started
+## Usage
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
+Compile this project and try to play with it. JSON files are its only output results. Currently, only desktop platforms (Windows, macOS, Linux) are the targets of the project.
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project is demo-only and should never be used in any production environments. Any bugs will never be fixed even with any forms of report. The project has finished development, so no longer enhancements supported. The project has nothing to do with any network activities and deals with only local files, therefore not providing any possible solution about computer networking.
 
-## Assets
+## Reference
 
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
-
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
+See [sing-box configuration](https://sing-box.sagernet.org/configuration/).
 
 ## Localization
 

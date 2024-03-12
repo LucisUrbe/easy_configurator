@@ -216,5 +216,15 @@ Map<String, dynamic> buildConfig() {
     config["route"]["rules"] =
         jsonDecode(RouteRulesStore.rules.first.ruleJsonStub);
   }
+  if (InboundsStore.inbounds.first.inboundJsonStub.isNotEmpty) {
+    config.addAll({
+      "inbounds": jsonDecode(InboundsStore.inbounds.first.inboundJsonStub),
+    });
+  }
+  if (OutboundsStore.outbounds.first.outboundJsonStub.isNotEmpty) {
+    config.addAll({
+      "outbounds": jsonDecode(OutboundsStore.outbounds.first.outboundJsonStub),
+    });
+  }
   return config;
 }
