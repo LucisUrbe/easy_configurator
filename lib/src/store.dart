@@ -261,3 +261,23 @@ class RouteRulesStore {
     RouteRuleStore(),
   ];
 }
+
+class InboundStore {
+  String inboundJsonStub = '';
+}
+
+class InboundsStore {
+  static List<InboundStore> inbounds = [
+    InboundStore(),
+  ];
+}
+
+class OutboundStore {
+  String outboundJsonStub = '';
+}
+
+class OutboundsStore {
+  static List<OutboundStore> outbounds = [
+    OutboundStore(),
+  ];
+}

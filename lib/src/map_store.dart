@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'store.dart';
 
 void mapLog(Map<String, dynamic> config) {
@@ -247,7 +249,9 @@ void mapDNS(Map<String, dynamic> config) {
       if (dnsConfig.containsKey('rules')) {
         DNSCheckedStore.rules = true;
         // rules are JSON stub only
-        DNSRulesStore.rules.first.ruleJsonStub = dnsConfig['rules'].toString();
+        const JsonEncoder encoder = JsonEncoder();
+        DNSRulesStore.rules.first.ruleJsonStub =
+            encoder.convert(dnsConfig['rules']);
       } else {
         DNSCheckedStore.rules = false;
       }
@@ -313,15 +317,15 @@ void mapRoute(Map<String, dynamic> config) {
       if (routeConfig.containsKey('rules')) {
         RouteCheckedStore.rules = true;
         // route rules are JSON stub only
+        const JsonEncoder encoder = JsonEncoder();
         RouteRulesStore.rules.first.ruleJsonStub =
-            routeConfig['rules'].toString();
+            encoder.convert(routeConfig['rules']);
       } else {
         RouteCheckedStore.rules = false;
       }
       if (routeConfig.containsKey('rule_set')) {
         RouteCheckedStore.ruleSet = true;
-        final List<dynamic> ruleSetsConfig =
-            routeConfig['rule_set'];
+        final List<dynamic> ruleSetsConfig = routeConfig['rule_set'];
         for (final ruleSet in ruleSetsConfig) {
           var ruleSetObject = RouteRuleSetStore();
           if (ruleSet.containsKey('type')) {
@@ -400,10 +404,30 @@ void mapRoute(Map<String, dynamic> config) {
   }
 }
 
+void mapInbounds(Map<String, dynamic> config) {
+  if (config.containsKey('inbounds')) {
+    // inbounds are JSON stub only
+    const JsonEncoder encoder = JsonEncoder();
+    InboundsStore.inbounds.first.inboundJsonStub =
+        encoder.convert(config['inbounds']);
+  }
+}
+
+void mapOutbounds(Map<String, dynamic> config) {
+  if (config.containsKey('outbounds')) {
+    // inbounds are JSON stub only
+    const JsonEncoder encoder = JsonEncoder();
+    OutboundsStore.outbounds.first.outboundJsonStub =
+        encoder.convert(config['outbounds']);
+  }
+}
+
 void loadConfig(Map<String, dynamic> config) {
   mapLog(config);
   mapNTP(config);
   mapExperimental(config);
   mapDNS(config);
   mapRoute(config);
+  mapInbounds(config);
+  mapOutbounds(config);
 }
